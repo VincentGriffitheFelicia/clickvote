@@ -1,0 +1,29 @@
+/* Main style */
+.link {
+    @apply font-medium select-none;
+    @apply py-3 px-8;
+    @apply transition-colors;
+}
+
+.link-default {
+    @apply  text-main-5;
+    @apply hover:text-main-7;
+}
+
+.link-primary {
+    @apply bg-accent-1 text-main-8;
+    @apply hover:bg-accent-2 !important;
+}
+
+.link-rounded {
+    @apply rounded-full;
+}
+
+.link-full {
+    @apply block;
+}
+
+.link-underlined {
+    @apply border-b border-transparent select-none;
+    @apply hover:border-main-7;
+}

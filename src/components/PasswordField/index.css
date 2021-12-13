@@ -1,0 +1,25 @@
+.password-field-container {
+    @apply flex items-center;
+    @apply bg-main-3 shadow-md;
+    @apply border border-transparent rounded-lg;
+    @apply focus-within:ring-2 focus-within:ring-accent-1;
+}
+
+.password-field {
+    @apply text-base font-medium;
+    @apply w-full py-2 px-4 appearance-none;
+    @apply placeholder-main-5 text-main-7 bg-transparent;
+    @apply focus:outline-none focus:border-transparent;
+    @apply hover:placeholder-main-6;
+    @apply transition-colors;
+}
+
+.password-field-icon-container {
+    @apply text-main-7 mr-3;
+    @apply hover:text-main-8 cursor-pointer;
+}
+
+.password-field-icon {
+    @apply w-6 h-6;
+    @apply fill-current;
+}

@@ -1,0 +1,11 @@
+.paragraph {
+    @apply text-main-6 text-base;
+}
+
+.note {
+    @apply text-main-7 text-base;
+}
+
+.info {
+    @apply text-main-5 text-base inline-block;
+}

@@ -1,0 +1,23 @@
+.default {
+    @apply py-2 px-4 rounded-lg font-medium select-none text-main-8;
+    @apply hover:text-main-7;
+}
+
+.primary {
+    @apply bg-accent-1 text-main-8 shadow-md;
+    @apply transition-colors;
+    @apply hover:bg-accent-2 hover:text-main-8;
+    @apply disabled:opacity-75;
+}
+
+.primary:disabled, .default:disabled {
+    @apply cursor-not-allowed;
+}
+
+.outlined {
+    @apply border-2 border-main-4;
+}
+
+.full {
+    @apply w-full block;
+}

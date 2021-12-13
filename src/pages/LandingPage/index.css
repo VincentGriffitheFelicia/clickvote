@@ -1,0 +1,12 @@
+.main-container {
+    @apply max-w-5xl mx-auto px-8 pt-6 pb-14 min-h-screen;
+    @apply grid grid-cols-1 gap-28 auto-rows-max;
+}
+
+.main-content {
+    @apply grid grid-cols-1 gap-24 md:gap-16 md:grid-cols-2 place-items-center;
+}
+
+.nav {
+    @apply flex items-center justify-between;
+}

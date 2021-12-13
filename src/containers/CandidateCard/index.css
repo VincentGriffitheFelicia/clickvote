@@ -1,0 +1,39 @@
+.card-container {
+    height: 100%;
+    perspective: 70rem;
+}
+
+.card-flip, .card-container {
+    transform-style: preserve-3d;
+    transition: all 0.7s ease;
+}
+
+.card-flip {
+    display: grid;
+    grid-template: 1fr / 1fr;
+    grid-template-areas: "frontAndBack";
+    transform-style: preserve-3d;
+    transition: all 0.7s ease;
+}
+
+.card-flip div {
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+}
+
+.card-front {
+    grid-area: frontAndBack;
+}
+
+.card-back {
+    grid-area: frontAndBack;
+    transform: rotateY(-180deg);
+}
+
+.flip {
+    transform: rotateY(180deg);
+}
+
+/* .card-container:hover .card-flip {
+    transform: rotateY(180deg);
+} */

@@ -1,0 +1,19 @@
+.error-container {
+    @apply flex bg-danger-light p-4 rounded-lg border-2 border-danger-dark
+}
+
+.error-container:not(:last-child) {
+    @apply mb-2;
+}
+
+.error-icon-container {
+    @apply text-danger-dark mr-3;
+}
+
+.error-close-icon-container {
+    @apply text-danger ml-3 hover:text-danger-dark cursor-pointer;
+}
+
+.error-icons {
+    @apply w-6 h-6 fill-current
+}

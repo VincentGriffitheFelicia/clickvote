@@ -1,0 +1,5 @@
+.label {
+    @apply block select-none;
+    @apply text-main-5 text-base;
+    @apply mb-1;
+}

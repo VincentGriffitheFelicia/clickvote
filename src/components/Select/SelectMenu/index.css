@@ -1,0 +1,7 @@
+.select-menu {
+    @apply absolute z-10 mt-1 w-full bg-main-3 shadow-lg max-h-40 rounded-md text-base ring-1 ring-accent-1 ring-opacity-5 overflow-auto focus:outline-none text-main-6;
+}
+
+.select-menu-hidden {
+    @apply hidden;
+}

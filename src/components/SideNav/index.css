@@ -1,0 +1,66 @@
+/* SIDE NAV */
+.side-nav-container {
+    @apply fixed hidden top-0 left-0 min-h-screen bg-main-3 bp-850:block z-10;
+    width: 20%;
+}
+
+/* SIDE NAV LOGO PORTION */
+.side-nav-logo-container {
+    @apply py-10 pl-4 pr-6 bg-main-1 text-center;
+}
+
+.side-nav-logo {
+    @apply h-5 inline-block;
+}
+
+/* SIDE NAV LINKS */
+.side-nav {
+    @apply flex flex-col;
+}
+
+.side-nav-item {
+    @apply relative;
+}
+
+.side-nav-item:active::before {
+    @apply bg-accent-2;
+}
+
+.side-nav-item::before {
+    @apply bg-accent-1;
+    content: '';
+    width: 3px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: scaleY(0);
+    transition: transform .2s, width .4s cubic-bezier(1, 0, 0, 1) .2s, background-color .1s;
+}
+
+.side-nav-item:hover::before {
+    transform: scaleY(1);
+    width: 100%;
+}
+
+.side-nav-link {
+    @apply py-4 px-8 font-semibold text-main-6 hover:text-main-8 cursor-pointer;
+    position: relative;
+    display: block;
+    z-index: 10;
+}
+
+.side-nav-link-active {
+    @apply relative block bg-accent-1 text-main-8;
+    transition: all .2s;
+}
+
+.side-nav-link-active::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 100%;
+    @apply bg-main-8;
+}

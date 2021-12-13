@@ -1,0 +1,21 @@
+.select-btn {
+    @apply relative w-full truncate;
+    @apply inline-flex justify-between;
+    @apply bg-main-3 text-main-5;
+    @apply font-medium text-base;
+    @apply py-2 pl-4 pr-2;
+    @apply border border-transparent rounded-md shadow-md;
+    @apply text-left cursor-default; 
+    @apply focus:outline-none focus:ring-1 focus:ring-accent-1 focus:border-accent-1;
+    @apply hover:text-main-7;
+}
+
+.select-btn-icon-container {
+    @apply text-main-7;
+    @apply hover:text-main-8 cursor-pointer;
+}
+
+.select-btn-icon {
+    @apply w-6 h-6;
+    @apply fill-current;
+}

@@ -1,0 +1,9 @@
+.h1 {
+    @apply text-main-8 text-4xl font-extrabold block select-none;
+    @apply lg:text-6xl;
+    letter-spacing: 2px;
+}
+
+.h3 {
+    @apply text-main-8 text-2xl font-bold block select-none;
+}
