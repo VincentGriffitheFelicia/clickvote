@@ -1,7 +1,29 @@
 /* SIDE NAV */
 .side-nav-container {
-    @apply fixed hidden top-0 left-0 min-h-screen bg-main-3 bp-850:block z-10;
-    width: 20%;
+    @apply fixed hidden top-0 left-0 min-h-screen lg:block bg-main-2 z-10 h-full;
+    width: 260px;
+}
+
+@screen xl {
+    .side-nav-container {
+        width: 20%
+    }
+}
+
+.side-nav-container::-webkit-scrollbar {
+    @apply hidden
+}
+
+/* .side-nav-container::-webkit-scrollbar-track {
+    @apply hidden;
+}
+
+.side-nav-container::-webkit-scrollbar-thumb {
+    @apply hidden;
+} */
+
+.side-nav-container::-webkit-scrollbar-thumb:hover {
+    @apply bg-main-4;
 }
 
 /* SIDE NAV LOGO PORTION */

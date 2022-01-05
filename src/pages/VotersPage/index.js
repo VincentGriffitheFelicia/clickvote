@@ -1,78 +1,25 @@
-import React, { useCallback, useEffect, useState } from 'react'
-
-import { collection, getDocs } from '@firebase/firestore'
-
-import { db } from '../../firebase'
-
-import CandidateContainer from '../../components/CandidateContainer'
-import CandidateCard from '../../containers/CandidateCard'
+import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import * as candidatesActionTypes from '../../store/positions/actions'
+
+import CandidateCardList from '../../components/CandidateCardList'
+import VoteInfoBar from '../../components/VoteInfoBar'
+import WarningBanner from '../../components/WarningBanner'
+import * as candidatesActionTypes from '../../store/candidates/actions'
+
+import './index.css'
 
 function VotersPage(props) {
 
     const dispatch = useDispatch()
 
-    const [loading, setLoading] = useState(true)
-
-    const candidates = useSelector(state => state.positions[props.position].candidates)
-    const candidatesDocId = useSelector(state => state.positions[props.position].loadedCandidatesDocId)
-    const loaded = useSelector(state => state.positions[props.position].loaded)
-
-    const currentCandidatesId = useSelector(state => state.controlData.currentCandidatesId)
-    const openForVoting = useSelector(state => state.controlData.openForVoting)
-    const showResult = useSelector(state => state.controlData.showResult)
+    const candidates = useSelector(state => state.candidates.list[props.position])
+    const user = useSelector(state => state.userData.user)
+    const activeCandidateList = useSelector(state => state.controlData.activeCandidateList)
     const votingLimits = useSelector(state => state.controlData.votingLimits)
 
-
-    const fetchCandidates = useCallback(
-        async () => {
-
-            try {
-
-                const candidatesRef = collection(db, `candidates/${currentCandidatesId}/${props.position}`)
-                const documents = await getDocs(candidatesRef)
-
-                const candidates = []
-
-                documents.forEach(doc => {
-                    candidates.push({
-                        ...doc.data(),
-                        id: doc.id,
-                    })
-                })
-
-                dispatch({ 
-                    type: candidatesActionTypes.SET_CANDIDATES, 
-                    position: props.position,
-                    docId: currentCandidatesId,
-                    candidates
-                })
-
-            } catch(err) {
-                console.log(err)
-            }
-        },
-        [dispatch, props.position, currentCandidatesId],
-    )
-
     useEffect(() => {
-
-        async function start() {
-            setLoading(true)
-            if((candidatesDocId !== currentCandidatesId) || !loaded) {
-                await fetchCandidates()
-            }
-            setLoading(false)
-        }
-
-        start()
-
-        return () => {
-            setLoading(false)
-        }
-        
-    }, [fetchCandidates, candidatesDocId, loaded, currentCandidatesId])
+        window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
+    }, [])
 
     const getVoted = () => {
 
@@ -80,9 +27,10 @@ function VotersPage(props) {
         return candidates.filter((val) => val.voted)
     }
 
-    const checkToHide = (data) => {
+    const checkToHideVoteBtn = (data) => {
 
         if(!votingLimits) return false
+        if(user.listsVoted.includes(activeCandidateList)) return true
 
         const limit = votingLimits[props.position]
         const voted = getVoted()
@@ -91,7 +39,7 @@ function VotersPage(props) {
         else return false
     }
 
-    const voteCandidate = (id) => {
+    const onVote = (id) => {
 
         const limit = votingLimits[props.position]
         const voted = getVoted()
@@ -101,12 +49,13 @@ function VotersPage(props) {
         }
     }
 
-    const unvoteCandidate = (id) => {
+    const onUnVote = (id) => {
         dispatch({ type: candidatesActionTypes.VOTE_CANDIDATE, position: props.position, id: id });
     }
 
     const getPositionText = (position) => {
-        if(position === 'vicePresident') return 'Vice President'
+        if(position === 'vicePresidentInternal') return 'Vice President Internal'
+        else if(position === 'vicePresidentExternal') return 'Vice President External'
         else return position
     }
 
@@ -120,28 +69,35 @@ function VotersPage(props) {
     }
 
     return (
-        <div className='overflow-hidden'>
-            <CandidateContainer 
-                loading={loading}
-                voteCount={getVoteCount()} 
-                voteLimit={getVotingLimit()}
-                position={getPositionText(props.position)}
-                fixedControl
-            >
-
-                {
-                    candidates.length ? candidates.map(data => 
-                        <CandidateCard 
-                            key={data.id}
-                            voted={data.voted}
-                            hideVoteBtn={checkToHide(data)}
-                            voteHandler={() => voteCandidate(data.id)}
-                            unvoteHandler={() => unvoteCandidate(data.id)}
-                            { ...data } 
-                        />) : null
-                }
-            
-            </CandidateContainer>
+        <div className='voters-page-container overflow-hidden'>
+            {
+                candidates?.length ? (
+                    <React.Fragment>
+                        <VoteInfoBar 
+                            fixed 
+                            position = { getPositionText(props.position) } 
+                            voteCount = { getVoteCount() } 
+                            voteLimit = { getVotingLimit() } 
+                            hideVoteCount = { user.listsVoted.includes(activeCandidateList) || user.role === 'admin' }
+                        />
+                        <CandidateCardList
+                            className = 'mt-28 pb-8' 
+                            candidates = { candidates }
+                            onVote = { onVote }
+                            onUnVote = { onUnVote }
+                            hideVoteBtn = { checkToHideVoteBtn }
+                        /> 
+                    </React.Fragment>
+                ) : (
+                    <div className='w-full min-h-screen flex justify-center items-center'>
+                        <WarningBanner 
+                            message={
+                                activeCandidateList ? 'No candidates found in the current active list!' : 'No active list!'
+                            } 
+                        />
+                    </div>
+                )
+            }
         </div>
     )
 }

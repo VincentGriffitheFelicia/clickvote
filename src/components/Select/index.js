@@ -29,7 +29,7 @@ function Select(props) {
     return (
       <div className='select relative' ref={selectRef}>
         { props.label && <Label label={props.label} id={props.id} /> } 
-        <SelectButton onClick={handleShowMenu}>
+        <SelectButton selected={props.selected} onClick={handleShowMenu}>
           {props.selected ? props.selected : props.placeholder}
         </SelectButton>
         <SelectMenu show={showMenu}>

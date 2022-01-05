@@ -16,6 +16,10 @@ import Link from '../../components/Link'
 import Error from '../../components/Error'
 import './index.css'
 
+const courseOptions = ['Bachelor of Science in Computer Science', 'Bachelor of Science in Civil Engineering', 'Bachelor of Arts in Economics', 'Bachelor of Arts in English', 'Bachelor of Arts in Filipino', 'Bachelor of Arts in Political Science', 'Bachelor of Arts in Public Administration', 'Bachelor of Science in Biology', 'Bachelor of Science in Environmental Science', 'Bachelor of Science in Mathematics', 'Bachelor of Science in Business Administration major in Financial Management', 'Bachelor of Science in Business Administration major in Human Resource Management', 'Bachelor of Science in Business Administration major in Marketing Management', 'Bachelor of Science in Hospitality Management', 'Bachelor of Early Childhood Education', 'Bachelor of Physical Education', 'Bachelor of Secondary Education major in English', 'Bachelor of Secondary Education major in Filipino', 'Bachelor of Secondary Education major in Science']
+const departmentOptions = ['College of Information Technology Education', 'College of Engineering and Technology', 'College of Arts and Sciences', 'College of Business Management', 'College of Teacher Education']
+const yearLevelOptions = ['1st Year', '2nd Year', '3rd Year', '4th Year']
+
 function SignupPage() {
 
     // All states for signup page
@@ -29,11 +33,6 @@ function SignupPage() {
     const [repeatPassword, setRepeatPassword] = useState('')
     const [errors, setErrors] = useState([])
     const [loading, setLoading] = useState(false)
-
-    // Options For Select elements
-    const departmentOptions = ['CITE', 'CAS', 'CTE', 'CBM']
-    const courseOptions = ['BSCS', 'BSCE', 'BSIT', 'BSPS']
-    const yearLevelOptions = ['1st Year', '2nd Year', '3rd Year', '4th Year']
 
     // Pattern for validating if name is valid, and pattern for id
     const namePattern = /^(([A-Za-z]+[-']?)*([A-Za-z,]+)?\s)+([A-Za-z]+[-']?)*([A-Za-z]+)?[a-zA-Z]{1}[.]?$/
@@ -141,6 +140,8 @@ function SignupPage() {
                     await setDoc(doc(db, 'users', user.uid), {
                         studentName: fullName,
                         studentId: id,
+                        role: 'voter',
+                        listsVoted: [],
                         email,
                         department,
                         course,

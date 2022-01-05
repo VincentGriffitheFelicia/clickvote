@@ -1,0 +1,17 @@
+.vote-info-bar {
+    @apply w-full
+}
+
+@screen lg {
+    .vote-info-bar {
+        width: calc(100% - 260px);
+        @apply ml-auto;
+    }
+}
+
+@screen xl {
+    .vote-info-bar {
+        width: 80%;
+        @apply ml-auto;
+    }
+}

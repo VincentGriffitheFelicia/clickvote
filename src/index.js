@@ -9,19 +9,22 @@ import App from './App';
 import './index.css'
 import userAuth from './store/userAuth/reducer'
 import userData from './store/userData/reducer'
-import positions from './store/positions/reducer'
+import candidates from './store/candidates/reducer'
 import controlData from './store/controlData/reducer'
+import votes from './store/votes/reducer'
 
 const rootReducer = combineReducers({
   userAuth,
   userData,
-  positions,
+  candidates,
   controlData,
+  votes,
 })
 
-const store = createStore(rootReducer, 
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-)
+// const store = createStore(rootReducer, 
+//   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+// )
+const store = createStore(rootReducer)
 
 
 

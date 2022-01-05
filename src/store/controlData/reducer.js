@@ -1,6 +1,7 @@
 import * as actionTypes from './actions'
 
 const initialState = {
+    loaded: false,
     unsubscribe: null,
     currentCandidatesId: null,
     openForVoting: false,

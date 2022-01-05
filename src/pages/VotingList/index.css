@@ -1,0 +1,28 @@
+.voting-list-page-container {
+    @apply bg-main-2 lg:bg-main-3 min-h-screen;
+}
+
+@screen lg {
+    .voting-list-page-container {
+        width: calc(100% - 260px);
+        @apply ml-auto;
+    }
+}
+
+@screen xl {
+    .voting-list-page-container {
+        width: 80%;
+        @apply ml-auto;
+    }
+}
+
+.voting-list-layout {
+    display: grid;
+    grid-template-columns: max-content 1fr max-content;
+}
+
+@screen bp-1120 {
+    .voting-list-layout {
+        grid-template-columns: 3rem 3fr 1fr minmax(8rem, 1fr);
+    }
+}

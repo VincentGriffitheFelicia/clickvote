@@ -1,0 +1,17 @@
+.summary-page-container {
+    @apply bg-main-2 lg:bg-main-3 min-h-screen;
+}
+
+@screen lg {
+    .summary-page-container {
+        width: calc(100% - 260px);
+        @apply ml-auto;
+    }
+}
+
+@screen xl {
+    .summary-page-container {
+        width: 80%;
+        @apply ml-auto;
+    }
+}

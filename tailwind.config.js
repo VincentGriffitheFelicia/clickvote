@@ -14,6 +14,8 @@ module.exports = {
       'lg': '1024px',
       // => @media (min-width: 1024px) { ... }
 
+      'bp-1120': '1120px',
+
       'xl': '1280px',
       // => @media (min-width: 1280px) { ... }
 
@@ -40,7 +42,12 @@ module.exports = {
         light: '#ffd8d8',
         DEFAULT: '#FF3B3B',
         dark: '#e63535',
-      }
+      },
+      success: {
+        light: '#dcfce7',
+        DEFAULT: '#16a34a',
+        dark: '#166534',
+      },
     },
     extend: {},
   },

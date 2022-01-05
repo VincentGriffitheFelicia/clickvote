@@ -1,0 +1,17 @@
+.voters-page-container {
+    @apply bg-main-3 min-h-screen;
+}
+
+@screen lg {
+    .voters-page-container {
+        width: calc(100% - 260px);
+        @apply ml-auto;
+    }
+}
+
+@screen xl {
+    .voters-page-container {
+        width: 80%;
+        @apply ml-auto;
+    }
+}

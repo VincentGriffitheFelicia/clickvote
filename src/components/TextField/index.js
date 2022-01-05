@@ -12,7 +12,7 @@ function TextField(props) {
         <div className={containerClass}>
             { props.label && <Label label={props.label} id={props.id} /> }
             <input
-                className='text-field'
+                className={`text-field ${props.className}`}
                 value={ props.value }
                 placeholder={ props.placeholder }
                 onChange={ props.onChange } 

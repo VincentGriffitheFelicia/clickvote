@@ -1,0 +1,17 @@
+.candidate-list-page-container {
+    @apply bg-main-3 min-h-screen;
+}
+
+@screen lg {
+    .candidate-list-page-container {
+        width: calc(100% - 260px);
+        @apply ml-auto;
+    }
+}
+
+@screen xl {
+    .candidate-list-page-container {
+        width: 80%;
+        @apply ml-auto;
+    }
+}

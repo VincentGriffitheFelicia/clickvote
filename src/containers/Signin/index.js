@@ -51,8 +51,6 @@ function Signin() {
                         id: 'other-errors',
                         message: 'Failed to login. Please try again.'
                     })
-
-                    console.log(err)
                 }
             }
         }

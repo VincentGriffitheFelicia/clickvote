@@ -1,0 +1,19 @@
+.success-container {
+    @apply flex bg-success-light p-4 rounded-lg border-2 border-success-dark
+}
+
+.success-container:not(:last-child) {
+    @apply mb-2;
+}
+
+.success-icon-container {
+    @apply text-success mr-3;
+}
+
+.success-close-icon-container {
+    @apply text-success ml-3 hover:text-success-dark cursor-pointer;
+}
+
+.success-icons {
+    @apply w-6 h-6 fill-current
+}
